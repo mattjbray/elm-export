@@ -2,10 +2,12 @@
 {-# LANGUAGE FlexibleContexts    #-}
 {-# LANGUAGE FlexibleInstances   #-}
 {-# LANGUAGE GADTs               #-}
+{-# LANGUAGE OverloadedStrings   #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE TypeOperators       #-}
 module Elm.Type where
 
+import           Data.Int     (Int16, Int32, Int64, Int8)
 import           Data.Map
 import           Data.Proxy
 import           Data.Text
@@ -63,6 +65,18 @@ instance ElmType Int where
     toElmType _ = Primitive "Int"
 
 instance ElmType Integer where
+    toElmType _ = Primitive "Int"
+
+instance ElmType Int8 where
+    toElmType _ = Primitive "Int"
+
+instance ElmType Int16 where
+    toElmType _ = Primitive "Int"
+
+instance ElmType Int32 where
+    toElmType _ = Primitive "Int"
+
+instance ElmType Int64 where
     toElmType _ = Primitive "Int"
 
 instance (ElmType a,ElmType b) => ElmType (a,b) where
