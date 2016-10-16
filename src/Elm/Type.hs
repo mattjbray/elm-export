@@ -7,6 +7,7 @@
 module Elm.Type where
 
 import           Data.Map
+import           Data.IntMap
 import           Data.Proxy
 import           Data.Text
 import           Data.Time
@@ -80,6 +81,11 @@ instance (ElmType k,ElmType v) => ElmType (Map k v) where
   toElmType _ =
     Dict (toElmType (Proxy :: Proxy k))
          (toElmType (Proxy :: Proxy v))
+
+instance (ElmType v) => ElmType (IntMap v) where
+ toElmType _ =
+   Dict (toElmType (Proxy :: Proxy Int))
+        (toElmType (Proxy :: Proxy v))
 
 instance ElmType a => ElmType (Proxy a) where
   toElmType _ = toElmType (undefined :: a)
