@@ -8,6 +8,7 @@
 
 module Elm.Type where
 
+import           Data.Int     (Int32)
 import           Data.Map
 import           Data.Proxy
 import           Data.Text
@@ -171,7 +172,7 @@ class HasElmComparable a where
 instance HasElmComparable String where
   toElmComparable _ = EString
 
-instance ElmType Int where
+instance ElmType Int32 where
   toElmType _ = ElmPrimitive EInt
 
 instance ElmType Char where
